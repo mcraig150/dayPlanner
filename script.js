@@ -1,15 +1,22 @@
 
+//startter function
 function start(){
+  
+//sets date on the header
   $('#currentDay').append(moment().format('MMM Do, YYYY'));
 
   checkTime();
 
 }
 
+
+//function for color coding time blocks
 function checkTime(){
 
     var hour = moment().hours();
 
+
+    // loops through all hours checks if "i" is past presnt or future 
     for(var i = 9; i <= 17; i++) {
 
         var target = "#" + i;
@@ -32,8 +39,11 @@ function checkTime(){
 
 }
 
+
+//function for saving data
 function saveData(){
 
+    //Saves event on click of button
     $(".saveBtn").click(function(){
         var save = parseInt($(this).attr("id"));
         var event = $("#" + save + "t").val();
@@ -42,6 +52,8 @@ function saveData(){
         console.log(save);
     });
 
+
+    //loops through all hours and checks for saved events
     for(var i = 9; i <= 17; i++) {
         var text = "#" + i + "t";
         $(text).val(localStorage.getItem("" + i));
